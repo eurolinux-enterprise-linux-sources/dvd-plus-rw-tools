@@ -1,7 +1,7 @@
 Summary:	Toolchain to master DVD+RW/+R media
 Name:		dvd+rw-tools
 Version:	7.1
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	GPLv2
 Group:		Applications/Multimedia
 Source:		http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-%{version}.tar.gz
@@ -13,6 +13,7 @@ Patch4: 	dvd+rw-tools-7.0-reload.patch
 Patch5: 	dvd+rw-tools-7.0-wctomb.patch
 Patch6:		dvd+rw-tools-7.0-dvddl.patch
 Patch7:		dvd+rw-tools-7.1-lastshort.patch
+Patch8:		dvd+rw-tools-7.1-bluray_srm+pow.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 Requires:	mkisofs >= 2.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -31,6 +32,7 @@ information see http://fy.chalmers.se/~appro/linux/DVD+RW/.
 %patch5 -p0 -b .wctomb
 %patch6 -p0 -b .dvddl
 %patch7 -p1 -b .lastshort
+%patch8 -p1 -b .pow
 
 install -m 644 %{SOURCE1} index.html
 
@@ -54,6 +56,10 @@ rm -rf %{buildroot}
 %{_mandir}/man1/growisofs.1*
 
 %changelog
+* Mon Oct 05 2015 Frantisek Kluknavsky <fkluknav@redhat.com> - 7.1-7
+- added dvd+rw-tools-7.1-bluray_srm+pow.patch from Fedora
+- Resolves: #1227127
+
 * Tue Sep 25 2012 Honza Horak <hhorak@redhat.com> - 7.1-6
 - Allow buffer length of the block to be shorter than multiple of 16,
   even in case of DAO writing
