@@ -1,7 +1,7 @@
 Summary:	Toolchain to master DVD+RW/+R media
 Name:		dvd+rw-tools
 Version:	7.1
-Release:	5%{?dist}
+Release:	6%{?dist}
 License:	GPLv2
 Group:		Applications/Multimedia
 Source:		http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-%{version}.tar.gz
@@ -12,6 +12,7 @@ Patch3:		dvd+rw-tools-7.0-glibc2.6.90.patch
 Patch4: 	dvd+rw-tools-7.0-reload.patch
 Patch5: 	dvd+rw-tools-7.0-wctomb.patch
 Patch6:		dvd+rw-tools-7.0-dvddl.patch
+Patch7:		dvd+rw-tools-7.1-lastshort.patch
 URL:		http://fy.chalmers.se/~appro/linux/DVD+RW/
 Requires:	mkisofs >= 2.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -29,6 +30,7 @@ information see http://fy.chalmers.se/~appro/linux/DVD+RW/.
 %patch4 -p1 -b .reload
 %patch5 -p0 -b .wctomb
 %patch6 -p0 -b .dvddl
+%patch7 -p1 -b .lastshort
 
 install -m 644 %{SOURCE1} index.html
 
@@ -52,6 +54,11 @@ rm -rf %{buildroot}
 %{_mandir}/man1/growisofs.1*
 
 %changelog
+* Tue Sep 25 2012 Honza Horak <hhorak@redhat.com> - 7.1-6
+- Allow buffer length of the block to be shorter than multiple of 16,
+  even in case of DAO writing
+  Resolves: #807474
+
 * Tue Jun 22 2010 Roman Rakus <rrakus@redhat.com> - 7.1-5
 - Compile with -fno-strict-aliasing CFLAG
   Resolves: #605148
