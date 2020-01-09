@@ -1,7 +1,7 @@
 Summary:	Toolchain to master DVD+RW/+R media
 Name:		dvd+rw-tools
 Version:	7.1
-Release:	13%{?dist}
+Release:	15%{?dist}
 License:	GPLv2
 Group:		Applications/Multimedia
 Source:		http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-%{version}.tar.gz
@@ -54,6 +54,12 @@ make WARN="-DDEFAULT_BUF_SIZE_MB=16 -DRLIMIT_MEMLOCK" %{?_smp_mflags}
 %{_mandir}/man1/*.1*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 7.1-15
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 7.1-14
+- Mass rebuild 2013-12-27
+
 * Mon Jun 24 2013 Frantisek Kluknavsky <fkluknav@redhat.com> - 7.1-13
 - when formating blu-ray as srm+pow, handle it later correctly as srm+pow, not srm
 (credits Thomas Schmitt)
